@@ -1,30 +1,23 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
-import { Container } from './components/ui';
+import { AppLayout } from './components/layout/AppLayout';
 
+const HomePage = lazy(() => import('./pages/HomePage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const DesignSystemPage = import.meta.env.DEV
   ? lazy(() => import('./pages/DesignSystemPage'))
   : null;
 
-function FoundationPlaceholder() {
+function LoadingFallback() {
   return (
-    <main className="flex min-h-screen items-center bg-[var(--mv-bg)] py-12 text-[var(--mv-text-primary)]">
-      <Container className="max-w-xl">
-        <div className="rounded-2xl border border-[var(--mv-border)] bg-[var(--mv-surface)] p-8 shadow-[var(--mv-shadow-sm)]">
-          <p className="font-mono text-xs font-medium uppercase tracking-wider text-[var(--mv-accent-text)]">
-            MangaVerse
-          </p>
-          <h1 className="mt-2 text-2xl font-bold">
-            Design System Foundation Ready
-          </h1>
-          <p className="mt-2 text-sm text-[var(--mv-text-secondary)]">
-            The design-system showcase route is available only in development mode
-            at <code className="font-mono text-xs">/design-system</code>.
-          </p>
-        </div>
-      </Container>
-    </main>
+    <div
+      role="status"
+      aria-label="Loading"
+      className="flex min-h-screen items-center justify-center bg-[var(--mv-bg)] text-sm text-[var(--mv-text-secondary)]"
+    >
+      <span className="sr-only">Loading…</span>
+    </div>
   );
 }
 
@@ -32,24 +25,19 @@ export default function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
-        <Suspense
-          fallback={
-            <div className="flex min-h-screen items-center justify-center bg-[var(--mv-bg)] text-sm text-[var(--mv-text-secondary)]">
-              Loading...
-            </div>
-          }
-        >
+        <Suspense fallback={<LoadingFallback />}>
           <Routes>
+            {/* Application shell wraps all real app pages */}
+            <Route element={<AppLayout />}>
+              <Route path="/" element={<HomePage />} />
+              {/* Future pages registered here: /browse, /story/:id, /library, /community */}
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+
+            {/* Dev-only showcase — bypasses AppLayout (has its own header) */}
             {import.meta.env.DEV && DesignSystemPage && (
-              <>
-                <Route path="/design-system" element={<DesignSystemPage />} />
-                <Route
-                  path="/"
-                  element={<Navigate to="/design-system" replace />}
-                />
-              </>
+              <Route path="/design-system" element={<DesignSystemPage />} />
             )}
-            <Route path="*" element={<FoundationPlaceholder />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
