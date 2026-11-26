@@ -1,0 +1,107 @@
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+
+  /* Core surfaces */
+  --mv-bg: #f7f8fc;
+  --mv-surface: #ffffff;
+  --mv-surface-subtle: #f1f3f9;
+  --mv-surface-elevated: #ffffff;
+
+  /* Brand accent */
+  --mv-accent: #635bdb;
+  --mv-accent-hover: #524ac7;
+  --mv-accent-active: #453eb5;
+  --mv-accent-text: #564ed1;
+  --mv-accent-soft: rgba(99, 91, 219, 0.1);
+  --mv-accent-ring: rgba(99, 91, 219, 0.35);
+  --mv-on-accent: #ffffff;
+
+  /* Typography */
+  --mv-text-primary: #171923;
+  --mv-text-secondary: #667085;
+  --mv-text-muted: #768096;
+
+  /* Borders */
+  --mv-border: #e6e8ef;
+  --mv-border-strong: #cdd3e0;
+
+  /* Semantic status */
+  --mv-success: #16845b;
+  --mv-success-soft: rgba(22, 132, 91, 0.1);
+  --mv-warning: #b7791f;
+  --mv-warning-soft: rgba(183, 121, 31, 0.12);
+  --mv-error: #d14343;
+  --mv-error-soft: rgba(209, 67, 67, 0.1);
+  --mv-info: #3974c6;
+  --mv-info-soft: rgba(57, 116, 198, 0.1);
+
+  /* Elevation & radii */
+  --mv-shadow-xs: 0 1px 2px rgba(23, 25, 35, 0.04);
+  --mv-shadow-sm: 0 2px 8px rgba(23, 25, 35, 0.05), 0 1px 2px rgba(23, 25, 35, 0.04);
+  --mv-shadow-md: 0 10px 24px -6px rgba(23, 25, 35, 0.08), 0 2px 6px rgba(23, 25, 35, 0.04);
+
+  /* Texture intensities (balanced) */
+  --mv-paper-opacity: 0.035;
+  --mv-halftone-color: rgba(23, 25, 35, 0.1);
+  --mv-contour-color: rgba(99, 91, 219, 0.14);
+  --mv-grain-opacity: 0.06;
+  --mv-mosaic-a: rgba(99, 91, 219, 0.14);
+  --mv-mosaic-b: rgba(57, 116, 198, 0.1);
+  --mv-mosaic-c: rgba(23, 25, 35, 0.06);
+  --mv-blur-scrim: rgba(247, 248, 252, 0.72);
+}
+
+[data-theme='dark'],
+.dark {
+  color-scheme: dark;
+
+  /* Core surfaces */
+  --mv-bg: #0f1117;
+  --mv-surface: #161923;
+  --mv-surface-subtle: #1d2130;
+  --mv-surface-elevated: #202536;
+
+  /* Brand accent (button fill keeps >4.5:1 contrast with white text) */
+  --mv-accent: #635bdb;
+  --mv-accent-hover: #736ce6;
+  --mv-accent-active: #544cc9;
+  --mv-accent-text: #9b95f7;
+  --mv-accent-soft: rgba(123, 116, 240, 0.16);
+  --mv-accent-ring: rgba(155, 149, 247, 0.42);
+  --mv-on-accent: #ffffff;
+
+  /* Typography */
+  --mv-text-primary: #f3f5fa;
+  --mv-text-secondary: #a1a9bc;
+  --mv-text-muted: #7c859b;
+
+  /* Borders */
+  --mv-border: #272c3d;
+  --mv-border-strong: #373e55;
+
+  /* Semantic status */
+  --mv-success: #2fb37e;
+  --mv-success-soft: rgba(47, 179, 126, 0.14);
+  --mv-warning: #e09f3e;
+  --mv-warning-soft: rgba(224, 159, 62, 0.14);
+  --mv-error: #f06464;
+  --mv-error-soft: rgba(240, 100, 100, 0.14);
+  --mv-info: #5d9cec;
+  --mv-info-soft: rgba(93, 156, 236, 0.14);
+
+  /* Elevation */
+  --mv-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.28);
+  --mv-shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.32), 0 1px 2px rgba(0, 0, 0, 0.22);
+  --mv-shadow-md: 0 12px 28px -6px rgba(0, 0, 0, 0.45), 0 4px 10px rgba(0, 0, 0, 0.28);
+
+  /* Texture intensities (balanced for dark mode) */
+  --mv-paper-opacity: 0.045;
+  --mv-halftone-color: rgba(243, 245, 250, 0.09);
+  --mv-contour-color: rgba(155, 149, 247, 0.16);
+  --mv-grain-opacity: 0.08;
+  --mv-mosaic-a: rgba(155, 149, 247, 0.18);
+  --mv-mosaic-b: rgba(93, 156, 236, 0.14);
+  --mv-mosaic-c: rgba(243, 245, 250, 0.06);
+  --mv-blur-scrim: rgba(15, 17, 23, 0.72);
+}
