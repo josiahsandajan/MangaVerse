@@ -1,0 +1,89 @@
+/* MangaVerse Visual Texture System — 8 Balanced Reusable Treatments */
+
+/* 1. Paper Texture — subtle SVG fractalNoise for backgrounds & reading surfaces */
+.mv-texture-paper {
+  position: relative;
+}
+.mv-texture-paper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: var(--mv-paper-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  z-index: 0;
+}
+
+/* 2. Halftone — manga-inspired dot matrix for promotional sections & accents */
+.mv-texture-halftone {
+  background-image: radial-gradient(var(--mv-halftone-color) 1.25px, transparent 1.25px);
+  background-size: 10px 10px;
+}
+.mv-texture-halftone-dense {
+  background-image: radial-gradient(var(--mv-halftone-color) 1.1px, transparent 1.1px);
+  background-size: 6px 6px;
+}
+
+/* 3. Grainy Gradients — layered atmospheric radial gradients + fine grain */
+.mv-texture-grainy {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--mv-surface);
+  background-image:
+    radial-gradient(at 14% 18%, rgba(99, 91, 219, 0.18) 0px, transparent 52%),
+    radial-gradient(at 86% 22%, rgba(57, 116, 198, 0.14) 0px, transparent 48%),
+    radial-gradient(at 60% 88%, rgba(22, 132, 91, 0.08) 0px, transparent 50%);
+}
+.mv-texture-grainy::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--mv-grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+/* 4. Contour Lines — topographic SVG pattern for section backgrounds & empty states */
+.mv-texture-contour {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240' fill='none'%3E%3Cpath d='M-20 40 C 40 10, 90 70, 150 35 C 200 5, 230 45, 260 30' stroke='%23635BDB' stroke-opacity='0.14' stroke-width='1.1'/%3E%3Cpath d='M-20 85 C 50 55, 100 115, 165 80 C 210 55, 235 90, 260 75' stroke='%23635BDB' stroke-opacity='0.11' stroke-width='1.1'/%3E%3Cpath d='M-20 135 C 35 110, 95 165, 155 130 C 205 100, 230 140, 260 125' stroke='%23635BDB' stroke-opacity='0.14' stroke-width='1.1'/%3E%3Cpath d='M-20 185 C 45 155, 105 215, 170 180 C 215 155, 240 190, 260 175' stroke='%23635BDB' stroke-opacity='0.1' stroke-width='1.1'/%3E%3Cpath d='M-20 225 C 55 200, 110 245, 175 215 C 220 195, 245 225, 260 215' stroke='%23635BDB' stroke-opacity='0.08' stroke-width='1.1'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+}
+
+/* 5. ASCII & Pixels — decorative monospace & crisp pixel accents */
+.mv-texture-ascii {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.06em;
+}
+.mv-pixel-notch {
+  box-shadow:
+    inset 0 0 0 1px var(--mv-border),
+    3px 3px 0 0 var(--mv-accent-soft);
+}
+
+/* 6. Blurred Photos — atmospheric backdrop image (never applied to actual manga covers) */
+.mv-texture-blurred-img {
+  filter: blur(22px) saturate(1.15);
+  transform: scale(1.12);
+}
+
+/* 7. Dithered Images — crisp pixel rendering for build-time dithered static assets */
+.mv-texture-dithered {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* 8. Pixel Mosaics — geometric grid for dividers, transitions, and decorative bands */
+.mv-pixel-mosaic-cell {
+  transition: opacity 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mv-pixel-mosaic-cell,
+  .mv-texture-blurred-img {
+    transition: none !important;
+    animation: none !important;
+  }
+}

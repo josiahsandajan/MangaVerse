@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@import "./styles/tokens.css";
+@import "./styles/textures.css";
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-reading: 'Literata', Georgia, Cambria, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-mv-bg: var(--mv-bg);
+  --color-mv-surface: var(--mv-surface);
+  --color-mv-surface-subtle: var(--mv-surface-subtle);
+  --color-mv-surface-elevated: var(--mv-surface-elevated);
+
+  --color-mv-accent: var(--mv-accent);
+  --color-mv-accent-hover: var(--mv-accent-hover);
+  --color-mv-accent-text: var(--mv-accent-text);
+  --color-mv-accent-soft: var(--mv-accent-soft);
+
+  --color-mv-primary: var(--mv-text-primary);
+  --color-mv-secondary: var(--mv-text-secondary);
+  --color-mv-muted: var(--mv-text-muted);
+
+  --color-mv-border: var(--mv-border);
+  --color-mv-border-strong: var(--mv-border-strong);
+
+  --color-mv-success: var(--mv-success);
+  --color-mv-warning: var(--mv-warning);
+  --color-mv-error: var(--mv-error);
+  --color-mv-info: var(--mv-info);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--mv-bg);
+    color: var(--mv-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--mv-accent-text);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
