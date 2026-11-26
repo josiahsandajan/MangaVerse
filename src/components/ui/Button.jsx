@@ -33,17 +33,20 @@ export function Button({
   loading = false,
   disabled = false,
   iconOnly = false,
+  as: Component = 'button',
   leftIcon: LeftIcon,
   rightIcon: RightIcon,
   className = '',
   ...props
 }) {
   const isDisabled = disabled || loading;
+  // Only set type/disabled on actual <button> elements
+  const isNativeButton = Component === 'button';
 
   return (
-    <button
-      type={type}
-      disabled={isDisabled}
+    <Component
+      type={isNativeButton ? type : undefined}
+      disabled={isNativeButton ? isDisabled : undefined}
       aria-busy={loading || undefined}
       className={[
         'inline-flex items-center justify-center font-medium transition-colors duration-150 select-none',
@@ -67,6 +70,6 @@ export function Button({
       {!loading && RightIcon && (
         <RightIcon className="h-4 w-4 shrink-0" aria-hidden="true" />
       )}
-    </button>
+    </Component>
   );
 }
