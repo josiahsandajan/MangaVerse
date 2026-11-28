@@ -4,6 +4,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { AppLayout } from './components/layout/AppLayout';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
+const BrowsePage = lazy(() => import('./pages/BrowsePage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const DesignSystemPage = import.meta.env.DEV
   ? lazy(() => import('./pages/DesignSystemPage'))
@@ -30,7 +31,8 @@ export default function App() {
             {/* Application shell wraps all real app pages */}
             <Route element={<AppLayout />}>
               <Route path="/" element={<HomePage />} />
-              {/* Future pages registered here: /browse, /story/:id, /library, /community */}
+              <Route path="/browse" element={<BrowsePage />} />
+              {/* Future pages registered here: /story/:id, /library, /community */}
               <Route path="*" element={<NotFoundPage />} />
             </Route>
 
