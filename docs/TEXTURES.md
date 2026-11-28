@@ -46,6 +46,20 @@ Texture CSS lives in `src/styles/textures.css`. Reusable React wrappers are expo
 - **Accessibility/performance:** The dot layer is `aria-hidden` and `pointer-events-none`; content renders above it. CSS radial gradients add no image request or drawing loop.
 - **Do not use:** Do not place dense dots under long paragraphs, small metadata, form controls, or every repeated card.
 
+### Directional halftone ramp
+
+```jsx
+<section className="relative rounded-xl bg-[var(--mv-surface)] p-6">
+  <HalftoneRamp direction="left" />
+  <h2 className="relative z-10">Featured stories</h2>
+</section>
+```
+
+- **API:** `HalftoneRamp({ direction = 'right', className = '' })`
+- **Directions:** `right`, `left`, `up`, and `down` name the edge the dots fade toward. Unrecognized directions use `right`.
+- **Placement:** Position the parent and layer its content above the ramp. The ramp fills its parent and inherits its corner radius.
+- **Theme and accessibility:** Reuses `--mv-halftone-color` with a static CSS gradient mask. The layer is hidden from assistive technology and ignores pointer input.
+
 ## 3. Grainy gradients
 
 **Purpose:** Atmospheric editorial backdrops for heroes and featured sections.
@@ -94,6 +108,17 @@ Texture CSS lives in `src/styles/textures.css`. Reusable React wrappers are expo
 - **Theme:** Uses surface, border, accent-soft, and accent-text variables. The glyph alone is `aria-hidden`; children remain accessible text.
 - **Accessibility/performance:** This is normal semantic text, not a replacement for labels or icons. Use Lucide for interface icons. It adds only two spans.
 - **Do not use:** Do not render large ASCII fields, encode required meaning only in the glyph, or use it for body copy or dense metadata.
+
+### Pixel glyphs
+
+```jsx
+<PixelGlyph variant="corner" />
+```
+
+- **API:** `PixelGlyph({ variant = 'spark', className = '' })`
+- **Variants:** `spark`, `corner`, and `diamond`. An unrecognized variant renders `spark`.
+- **Placement:** Use as decorative trim on an editorial heading or promo panel. The glyph renders at 18 × 18 pixels and accepts sizing classes.
+- **Theme and accessibility:** The inline SVG uses `--mv-accent-text` by default and is hidden from assistive technology. Use Lucide for icons that identify controls or convey meaning.
 
 ## 6. Blurred photos
 
@@ -147,6 +172,6 @@ Texture CSS lives in `src/styles/textures.css`. Reusable React wrappers are expo
 
 ## Current implementation boundaries
 
-- These eight components are exported from `src/components/textures`.
-- No current component supports intensity presets, fade directions, seeded randomness, or generic layer-only APIs. Do not document or use those options until implemented.
+- The eight treatments and their variants are exported from `src/components/textures`.
+- Directional fades are available on `HalftoneRamp`. Components expose their own options for density, size, and theme styling as documented above.
 - `--mv-contour-color` exists in the token file but is not currently consumed by `.mv-texture-contour`; the embedded SVG is the current source of contour color.

@@ -26,6 +26,23 @@
   background-size: 6px 6px;
 }
 
+.mv-texture-halftone-ramp {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  mask-image: linear-gradient(var(--mv-halftone-fade, to right), #000, transparent);
+}
+.mv-texture-halftone-ramp[data-direction='left'] {
+  --mv-halftone-fade: to left;
+}
+.mv-texture-halftone-ramp[data-direction='up'] {
+  --mv-halftone-fade: to top;
+}
+.mv-texture-halftone-ramp[data-direction='down'] {
+  --mv-halftone-fade: to bottom;
+}
+
 /* 3. Grainy Gradients — layered atmospheric radial gradients + fine grain */
 .mv-texture-grainy {
   position: relative;
@@ -61,6 +78,10 @@
   box-shadow:
     inset 0 0 0 1px var(--mv-border),
     3px 3px 0 0 var(--mv-accent-soft);
+}
+.mv-pixel-glyph {
+  color: var(--mv-accent-text);
+  pointer-events: none;
 }
 
 /* 6. Blurred Photos — atmospheric backdrop image (never applied to actual manga covers) */
