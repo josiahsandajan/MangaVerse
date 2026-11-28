@@ -1,3 +1,59 @@
+/*
+ * Theme-independent tokens. Values mirror what the approved components already
+ * use (Container, Button, Input, Card) so the tokens describe the system
+ * instead of competing with it.
+ */
+:root {
+  /* Font stacks. index.css maps these to Tailwind's font-sans/heading/reading/mono. */
+  --mv-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mv-font-heading: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mv-font-reading: 'Literata', Georgia, Cambria, 'Times New Roman', serif;
+  --mv-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Layout (Container: max-w-[1280px], px-4 / sm:px-6 / lg:px-10) */
+  --mv-content-width: 1280px;
+  --mv-gutter-mobile: 16px;
+  --mv-gutter-tablet: 24px;
+  --mv-gutter-desktop: 40px;
+
+  /* Radii (Button sm 10px, Button md/lg and Input 12px, Card 16px) */
+  --mv-radius-control-sm: 10px;
+  --mv-radius-control: 12px;
+  --mv-radius-card: 16px;
+  --mv-radius-panel: 20px;
+
+  /* Control heights (Button h-9 / h-10 / h-11, Input h-11) */
+  --mv-height-button-sm: 36px;
+  --mv-height-button: 40px;
+  --mv-height-button-lg: 44px;
+  --mv-height-input: 44px;
+
+  /* Motion (components use 150ms and 200ms) */
+  --mv-duration-fast: 150ms;
+  --mv-duration-base: 200ms;
+  --mv-duration-slow: 300ms;
+  --mv-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/*
+ * Compatibility aliases for the reviewed design-system naming. They live on
+ * every theme scope (not just :root) so they re-resolve inside a nested
+ * [data-theme] subtree. Existing token names remain the source of truth.
+ */
+:root,
+[data-theme],
+.dark {
+  --mv-text: var(--mv-text-primary);
+  --mv-text-2: var(--mv-text-secondary);
+  --mv-surface-sunken: var(--mv-surface-subtle);
+  --mv-primary: var(--mv-accent);
+  --mv-primary-hover: var(--mv-accent-hover);
+  --mv-primary-active: var(--mv-accent-active);
+  --mv-primary-soft: var(--mv-accent-soft);
+  --mv-primary-text: var(--mv-accent-text);
+  --mv-on-primary: var(--mv-on-accent);
+}
+
 :root,
 [data-theme='light'] {
   color-scheme: light;
@@ -16,24 +72,31 @@
   --mv-accent-soft: rgba(99, 91, 219, 0.1);
   --mv-accent-ring: rgba(99, 91, 219, 0.35);
   --mv-on-accent: #ffffff;
+  --mv-focus: var(--mv-accent-text);
 
   /* Typography */
   --mv-text-primary: #171923;
-  --mv-text-secondary: #667085;
-  --mv-text-muted: #768096;
+  /* Secondary was #667085 (4.48:1 on surface-subtle) and muted #768096 (3.7:1 on bg). */
+  --mv-text-secondary: #5c667a;
+  --mv-text-muted: #646e83;
 
   /* Borders */
   --mv-border: #e6e8ef;
   --mv-border-strong: #cdd3e0;
+  --mv-border-control: #858ba0; /* 3:1 outline for form controls (WCAG 1.4.11) */
 
   /* Semantic status */
   --mv-success: #16845b;
+  --mv-success-text: #0f6b49; /* text on soft backgrounds; the base color is 3.7 to 4.1:1 there */
   --mv-success-soft: rgba(22, 132, 91, 0.1);
   --mv-warning: #b7791f;
+  --mv-warning-text: #8a5a12;
   --mv-warning-soft: rgba(183, 121, 31, 0.12);
   --mv-error: #d14343;
+  --mv-error-text: #b23636;
   --mv-error-soft: rgba(209, 67, 67, 0.1);
   --mv-info: #3974c6;
+  --mv-info-text: #2d62aa;
   --mv-info-soft: rgba(57, 116, 198, 0.1);
 
   /* Elevation & radii */
@@ -64,30 +127,36 @@
 
   /* Brand accent (button fill keeps >4.5:1 contrast with white text) */
   --mv-accent: #635bdb;
-  --mv-accent-hover: #736ce6;
+  --mv-accent-hover: #6a62e0; /* was #736ce6: white text on it was 4.19:1 */
   --mv-accent-active: #544cc9;
   --mv-accent-text: #9b95f7;
   --mv-accent-soft: rgba(123, 116, 240, 0.16);
   --mv-accent-ring: rgba(155, 149, 247, 0.42);
   --mv-on-accent: #ffffff;
+  --mv-focus: var(--mv-accent-text);
 
   /* Typography */
   --mv-text-primary: #f3f5fa;
   --mv-text-secondary: #a1a9bc;
-  --mv-text-muted: #7c859b;
+  --mv-text-muted: #8a93a9; /* was #7c859b: 4.12:1 on surface-elevated */
 
   /* Borders */
   --mv-border: #272c3d;
   --mv-border-strong: #373e55;
+  --mv-border-control: #6b7290;
 
   /* Semantic status */
   --mv-success: #2fb37e;
+  --mv-success-text: #3dbb8a;
   --mv-success-soft: rgba(47, 179, 126, 0.14);
   --mv-warning: #e09f3e;
+  --mv-warning-text: #e0a93f;
   --mv-warning-soft: rgba(224, 159, 62, 0.14);
   --mv-error: #f06464;
+  --mv-error-text: #f27373;
   --mv-error-soft: rgba(240, 100, 100, 0.14);
   --mv-info: #5d9cec;
+  --mv-info-text: #6fa3e8;
   --mv-info-soft: rgba(93, 156, 236, 0.14);
 
   /* Elevation */

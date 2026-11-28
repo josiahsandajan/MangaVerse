@@ -37,7 +37,9 @@ import {
   DitheredArtwork,
   GrainyGradient,
   HalftoneOverlay,
+  HalftoneRamp,
   PaperTexture,
+  PixelGlyph,
   PixelMosaic,
 } from '../components/textures';
 import promoSource from '../assets/dithered/promo-horizon-source.png';
@@ -527,6 +529,12 @@ export default function DesignSystemPage() {
                   Pure CSS radial-gradient dot grid for promotional callouts and
                   accent panels.
                 </p>
+                <div className="relative mt-4 rounded-xl border border-[var(--mv-border)] bg-[var(--mv-surface)] px-3 py-3">
+                  <HalftoneRamp direction="left" />
+                  <p className="relative z-10 text-sm text-[var(--mv-text-secondary)]">
+                    Halftone ramp
+                  </p>
+                </div>
               </HalftoneOverlay>
 
               {/* 3. Grainy Gradients */}
@@ -568,6 +576,12 @@ export default function DesignSystemPage() {
                     <AsciiPixelAccent glyph="::">VOL.01</AsciiPixelAccent>
                     <AsciiPixelAccent glyph="[]">CH.142</AsciiPixelAccent>
                     <AsciiPixelAccent glyph=">>">EDITION</AsciiPixelAccent>
+                  </div>
+                  <div className="mt-4 flex items-center gap-3">
+                    <span className="text-sm text-[var(--mv-text-secondary)]">Pixel glyphs</span>
+                    <PixelGlyph variant="spark" />
+                    <PixelGlyph variant="corner" />
+                    <PixelGlyph variant="diamond" />
                   </div>
                 </CardContent>
               </Card>

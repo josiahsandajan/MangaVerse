@@ -4,5 +4,7 @@ export { ContourLines } from './ContourLines';
 export { DitheredArtwork } from './DitheredArtwork';
 export { GrainyGradient } from './GrainyGradient';
 export { HalftoneOverlay } from './HalftoneOverlay';
+export { HalftoneRamp } from './HalftoneRamp';
 export { PaperTexture } from './PaperTexture';
+export { PixelGlyph } from './PixelGlyph';
 export { PixelMosaic } from './PixelMosaic';

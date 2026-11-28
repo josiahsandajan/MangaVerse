@@ -1,6 +1,6 @@
 export function StoryCardSkeleton() {
   return (
-    <div role="status" aria-busy="true" aria-label="Loading story" className="animate-pulse">
+    <div aria-hidden="true" className="animate-pulse">
       {/* Cover skeleton */}
       <div
         className="rounded-xl bg-[var(--mv-surface-subtle)]"
@@ -12,7 +12,6 @@ export function StoryCardSkeleton() {
         <div className="h-3 w-2/3 rounded-full bg-[var(--mv-surface-subtle)]" />
         <div className="h-3 w-1/2 rounded-full bg-[var(--mv-surface-subtle)]" />
       </div>
-      <span className="sr-only">Loading story card</span>
     </div>
   );
 }
