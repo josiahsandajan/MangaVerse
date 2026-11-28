@@ -5,10 +5,10 @@
 @custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
 
 @theme {
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-reading: 'Literata', Georgia, Cambria, 'Times New Roman', serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: var(--mv-font-body);
+  --font-heading: var(--mv-font-heading);
+  --font-reading: var(--mv-font-reading);
+  --font-mono: var(--mv-font-mono);
 
   --color-mv-bg: var(--mv-bg);
   --color-mv-surface: var(--mv-surface);
@@ -17,8 +17,11 @@
 
   --color-mv-accent: var(--mv-accent);
   --color-mv-accent-hover: var(--mv-accent-hover);
+  --color-mv-accent-active: var(--mv-accent-active);
   --color-mv-accent-text: var(--mv-accent-text);
   --color-mv-accent-soft: var(--mv-accent-soft);
+  --color-mv-on-accent: var(--mv-on-accent);
+  --color-mv-focus: var(--mv-focus);
 
   --color-mv-primary: var(--mv-text-primary);
   --color-mv-secondary: var(--mv-text-secondary);
@@ -26,11 +29,29 @@
 
   --color-mv-border: var(--mv-border);
   --color-mv-border-strong: var(--mv-border-strong);
+  --color-mv-border-control: var(--mv-border-control);
 
   --color-mv-success: var(--mv-success);
   --color-mv-warning: var(--mv-warning);
   --color-mv-error: var(--mv-error);
   --color-mv-info: var(--mv-info);
+
+  /* Soft backgrounds and AA-safe text colors for status messaging */
+  --color-mv-success-soft: var(--mv-success-soft);
+  --color-mv-warning-soft: var(--mv-warning-soft);
+  --color-mv-error-soft: var(--mv-error-soft);
+  --color-mv-info-soft: var(--mv-info-soft);
+  --color-mv-success-text: var(--mv-success-text);
+  --color-mv-warning-text: var(--mv-warning-text);
+  --color-mv-error-text: var(--mv-error-text);
+  --color-mv-info-text: var(--mv-info-text);
+
+  --radius-mv-control-sm: var(--mv-radius-control-sm);
+  --radius-mv-control: var(--mv-radius-control);
+  --radius-mv-card: var(--mv-radius-card);
+  --radius-mv-panel: var(--mv-radius-panel);
+
+  --ease-mv-out: var(--mv-ease-out);
 }
 
 @layer base {
@@ -45,10 +66,15 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   *:focus-visible {
-    outline: 2px solid var(--mv-accent-text);
+    outline: 2px solid var(--mv-focus);
     outline-offset: 2px;
   }
 
