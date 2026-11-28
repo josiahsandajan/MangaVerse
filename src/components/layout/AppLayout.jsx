@@ -6,13 +6,17 @@ import { MobileNav } from './MobileNav';
 export function AppLayout() {
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
 
+  function toggleMobileNav() {
+    setMobileNavOpen((isOpen) => !isOpen);
+  }
+
   return (
     <div className="flex min-h-screen flex-col bg-[var(--mv-bg)]">
-      <AppHeader onOpenMobileNav={() => setMobileNavOpen(true)} />
-      <MobileNav
-        isOpen={isMobileNavOpen}
-        onClose={() => setMobileNavOpen(false)}
+      <AppHeader
+        isMobileNavOpen={isMobileNavOpen}
+        onToggleMobileNav={toggleMobileNav}
       />
+      {isMobileNavOpen && <MobileNav isOpen onClose={() => setMobileNavOpen(false)} />}
       {/* Main content area — aria-hidden when drawer is open to prevent background interaction */}
       <main
         id="main-content"

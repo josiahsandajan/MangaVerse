@@ -7,7 +7,7 @@ import { HeaderSearch } from './HeaderSearch';
 import { NotificationBell } from './NotificationBell';
 import { UserMenu } from './UserMenu';
 
-export function AppHeader({ onOpenMobileNav }) {
+export function AppHeader({ isMobileNavOpen, onToggleMobileNav }) {
   return (
     <header
       role="banner"
@@ -57,9 +57,9 @@ export function AppHeader({ onOpenMobileNav }) {
           {/* Hamburger (< lg) */}
           <button
             type="button"
-            onClick={onOpenMobileNav}
-            aria-label="Open navigation"
-            aria-expanded={false}
+            onClick={onToggleMobileNav}
+            aria-label={isMobileNavOpen ? 'Close navigation' : 'Open navigation'}
+            aria-expanded={isMobileNavOpen}
             aria-controls="mobile-nav"
             className="flex h-10 w-10 items-center justify-center rounded-xl text-[var(--mv-text-secondary)] transition-colors duration-150 hover:bg-[var(--mv-surface-subtle)] hover:text-[var(--mv-text-primary)] lg:hidden"
           >
